@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gs-springboot
+  labels:
+    app: gs-springboot
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: gs-springboot
+    tier: gs-springboot
+  type: NodePort
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gs-springboot
+  labels:
+    app: gs-springboot
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: gs-springboot
+        tier: gs-springboot
+    spec:
+      containers:
+      - image: gs-springboot
+        name: gs-springboot
+        ports:
+        - containerPort: 8080
+          name: gs-springboot
