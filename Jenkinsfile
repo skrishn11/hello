@@ -22,6 +22,7 @@ node {
 
     stage "Deploy"
 
-        kubernetesDeploy configs: "k8s/*.yaml", kubeconfigId: 'gs-springboot-kubeconfig'
+//        kubernetesDeploy configs: "k8s/*.yaml", kubeconfigId: 'gs-springboot-kubeconfig'
+          sh "kubectl apply -f k8s/deployment.yaml"
 
 }
