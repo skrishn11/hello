@@ -30,7 +30,7 @@ spec:
         tier: gs-springboot
     spec:
       containers:
-      - image: gs-springboot
+      - image: shkrishnamoorthy/pksimages:gs-springboot
         name: gs-springboot
         ports:
         - containerPort: 8080
