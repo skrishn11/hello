@@ -14,15 +14,13 @@ node {
 
     stage "Build/Push"
 
-        sh "pack build gs-springboot"
+        sh "pack build shkrishnamoorthy/pksimages:gs-springboot --publish"
     
     stage "Push"
 
         sh "echo pack build-push complete"
 
     stage "Deploy"
-
-//        kubernetesDeploy configs: "k8s/*.yaml", kubeconfigId: 'gs-springboot-kubeconfig'
           sh "kubectl apply -f k8s/deployment.yaml"
 
 }
